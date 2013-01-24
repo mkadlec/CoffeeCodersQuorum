@@ -10,8 +10,10 @@
  *
  *= require_self
 
+ *= require jquery.mobile-1.2.0.min
  */
- body {
+
+body {
  	font-family: Georgia, serif;
  	font-size: 14px;
  	margin: 0;
