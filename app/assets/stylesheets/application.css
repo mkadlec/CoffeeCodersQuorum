@@ -29,3 +29,7 @@
 	padding: 10px;
 	color: #465158;
 }
+
+#error_explanation {
+	background-color: #FBDFDE;
+}
