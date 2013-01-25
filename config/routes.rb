@@ -1,7 +1,8 @@
 CoffeeCodersQuorum::Application.routes.draw do
   #get "home/index"
 
-  resources :users
+  get 'users/login'
+  match 'users/login' => 'users#login', :as => :login
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

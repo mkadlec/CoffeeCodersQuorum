@@ -21,6 +21,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+      respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @users }
+    end
+  end
+
   # GET /users/new
   # GET /users/new.json
   def new
