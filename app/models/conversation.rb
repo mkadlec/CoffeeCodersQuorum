@@ -4,4 +4,6 @@ class Conversation < ActiveRecord::Base
   validates :name, :presence => true, :length => { :minimum => 5 }
   validates :description, :presence => true
 
+  has_many :comments, :dependent => :destroy
+
 end

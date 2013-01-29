@@ -1,6 +1,7 @@
 CoffeeCodersQuorum::Application.routes.draw do
-  resources :conversations
-
+  resources :conversations do
+    resources :comments
+  end
 
   devise_for :users
 

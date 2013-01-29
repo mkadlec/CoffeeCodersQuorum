@@ -43,3 +43,15 @@ a:active {text-decoration:underline;}
 #error_explanation {
 	background-color: #FBDFDE;
 }
+
+.conversationName {
+	
+}
+
+.textField {
+	width: 40em;
+	height: 10em;
+	background-color: #EEEEEE;
+}
+
+

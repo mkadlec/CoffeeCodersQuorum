@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @conversation.name %>
-</p>
+<div style="font-size: 24px;">
+	<p>
+	 	<b><%= @conversation.name %></b>
+	</p>
+</div>
 
 <p>
-  <b>Description:</b>
   <%= @conversation.description %>
 </p>
 
@@ -15,6 +15,17 @@
   <%= @user.nil? ? "Unknown" : @user.email %>
 </p>
 
+<%= render @conversation.comments %>
 
-<%= link_to 'Edit', edit_conversation_path(@conversation) %> |
-<%= link_to 'Back', conversations_path %>
+<div>Add a Comment</div>
+
+<%= form_for([@conversation, @conversation.comments.build]) do |f| %>
+	<div>
+		<%= f.text_area :body, :class => "textField" %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
+
+

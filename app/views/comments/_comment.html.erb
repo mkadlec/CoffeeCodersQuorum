@@ -1,0 +1,14 @@
+<div style="padding-left:10px;padding-bottom:10px;">
+	<table>
+		<tr>
+			<td>
+				<b><%= comment.nil? or comment.user.nil? ? "Someone" : comment.user.email %></b> posted the comment:
+	<%= comment.body %>
+			</td>
+			<td>
+				<%= link_to 'delete', [comment.conversation, comment], :confirm => 'Are you sure?', :method => :delete %>
+			</td>
+		</tr>
+	</table>
+	
+</div>
