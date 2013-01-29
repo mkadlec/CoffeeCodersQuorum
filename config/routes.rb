@@ -1,4 +1,7 @@
 CoffeeCodersQuorum::Application.routes.draw do
+  resources :conversations
+
+
   devise_for :users
 
   #get "home/index"
@@ -55,7 +58,7 @@ CoffeeCodersQuorum::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  root :to => 'conversations#index'
 
   # See how all your routes lay out with "rake routes"
 

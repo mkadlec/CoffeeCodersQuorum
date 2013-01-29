@@ -25,6 +25,11 @@
 	padding: 16px;
 }
 
+#mainHeader:hover {
+	color: white;
+	cursor: hand; cursor: pointer;
+}
+
 #mainBody {
 	padding: 10px;
 	color: #465158;

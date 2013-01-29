@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CoffeeCodersQuorum</title>
+
+  <title>Coffee Coders Quorum</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag :defaults %>
@@ -20,11 +21,6 @@
 
 	<div>
 
-<% if mobile_device? %>
-    <%= link_to "Full Site", :mobile => 0 %>
-  <% else %>
-    <%= link_to "Mobile Site", :mobile => 1 %>
-  <% end %>
 
 	</div>
 
@@ -32,6 +28,12 @@
 		<p class="notice"><%= notice %></p>
        	<p class="alert"><%= alert %></p>
 	</div>
+
+	<script>
+		$('#mainHeader').click(function() {
+			window.location = Routes.conversations_path();
+		})
+	</script>
 
 </body>
 </html>
