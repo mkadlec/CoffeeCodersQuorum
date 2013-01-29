@@ -15,6 +15,10 @@ class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
 
+    if (!@conversation.postedByUser.nil?)
+      @user = User.find(@conversation.postedByUser)
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @conversation }
@@ -41,6 +45,7 @@ class ConversationsController < ApplicationController
   # POST /conversations.json
   def create
     @conversation = Conversation.new(params[:conversation])
+    @conversation.update_attributes(:postedByUser => current_user.id)
 
     respond_to do |format|
       if @conversation.save
