@@ -8,16 +8,18 @@
 
   <% @conversations.each do |conversation| %>
     <tr>
-      <td style="padding-right:10px;"><%= conversation.name %></td>
-      <td><%= link_to 'Show', conversation %></td>
+      <td style="padding-right:10px;"><%= link_to conversation.name, conversation %></td>
       <td><%= link_to 'Edit', edit_conversation_path(conversation) %></td>
-      <td><%= link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Delete', conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </table>
 
   <br />
 
+<% if user_signed_in? %>
   <%= link_to 'New Conversation', new_conversation_path %>
+<% end %>
+
 
 <% end %>
