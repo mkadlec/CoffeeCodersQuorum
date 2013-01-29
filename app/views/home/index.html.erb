@@ -1,14 +1,1 @@
-<div style="float:right;">
-	<% if user_signed_in? %>
-		<div>
-			<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-		</div>
-	<% else %>
-		<div>
-			<%= link_to 'Sign In', new_user_session_path %>
-		</div>
-	<% end %>
-	
-</div>
-
 <p><b>If you have questions, the Coffee Coders have opinions...</b></p>

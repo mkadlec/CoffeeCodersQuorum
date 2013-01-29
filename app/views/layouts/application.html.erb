@@ -15,6 +15,19 @@
 		Coffee Coders Quorum
 	</div>
 
+	<div style="float:right; padding: 5px;">
+	<% if user_signed_in? %>
+		<div>
+			<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+		</div>
+	<% else %>
+		<div>
+			<%= link_to 'Sign In', new_user_session_path %>
+		</div>
+	<% end %>
+	
+</div>
+
 	<div id="mainBody">
 		<%= yield %>		
 	</div>
