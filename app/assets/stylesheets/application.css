@@ -35,9 +35,17 @@ a:active {text-decoration:underline;}
 	cursor: hand; cursor: pointer;
 }
 
+#content {
+	margin: auto;
+	width: 960px;
+	min-height: 450px;
+}
+
 #mainBody {
 	padding: 10px;
 	color: #465158;
+	width: 735px;
+	float: left;
 }
 
 #error_explanation {
