@@ -1,7 +1,7 @@
 
 
-<% if @conversations.count == 0 %>
-  There are currently no active conversations, would you like to <%= link_to 'create one', new_conversation_path %>?
+<% if @conversations.count == 0 && user_signed_in? %>
+  There are currently no active conversations, would you like to <u><%= link_to 'create one', new_conversation_path %></u>?
 <% else %>
 
   <table>
@@ -10,9 +10,9 @@
     <tr>
       <td style="padding-right:10px;"><%= link_to conversation.name, conversation %></td>
       
-      <% if conversation.postedByUser == current_user.id %> 
-        <td><%= link_to 'Edit', edit_conversation_path(conversation) %></td>
-        <td><%= link_to 'Delete', conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% if user_signed_in? && conversation.postedByUser == current_user.id %> 
+        <td><%= link_to link_to image_tag( 'edit.png', :size => "16x16"), edit_conversation_path(conversation) %></td>
+        <td><%= link_to image_tag( 'delete.jpg', :size => "12x12"), conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
 
     </tr>

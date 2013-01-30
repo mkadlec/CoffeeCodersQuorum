@@ -11,8 +11,10 @@
 </p>
 
 <p>
-  <b>Posted By:</b>
-  <%= @user.nil? ? "Unknown" : @user.email %>
+	<div style="font-size:75%">
+		<b>Posted By:</b>
+		<%= @user.nil? ? "Unknown" : @user.email %>
+  	</div>
 </p>
 
 <%= render @conversation.comments %>
