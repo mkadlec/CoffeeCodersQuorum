@@ -6,7 +6,7 @@
 
   <% @conversations.each do |conversation| %>
     <tr>
-      <td style="padding-right:10px;"><%= link_to conversation.name, conversation %></td>
+      <td style="padding-right:10px;font-weight:bold;"><%= link_to conversation.name, conversation %></td>
       
       <% if user_signed_in? && conversation.postedByUser == current_user.id %> 
         <td><%= link_to link_to image_tag( 'edit.png', :size => "16x16"), edit_conversation_path(conversation) %></td>

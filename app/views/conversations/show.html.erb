@@ -1,3 +1,5 @@
+<%= javascript_include_tag "conversations" %>
+
 <p id="notice"><%= notice %></p>
 
 <div style="font-size: 20px;">
@@ -23,14 +25,7 @@
 <a id="addComment">Add a Comment</a>
 </div>
 
-<%= form_for([@conversation, @conversation.comments.build]) do |f| %>
-	<div>
-		<%= f.text_area :body, :class => "textField" %>
-	</div>
-	<div class="actions">
-		<%= f.submit %>
-	</div>
-<% end %>
+<%= render "comments/form" %>
 
 <script>
 	$(document).ready(function() {
@@ -41,5 +36,8 @@
 		$('#new_comment').hide();
 	});
 </script>
+
+
+
 
 
