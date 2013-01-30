@@ -17,7 +17,9 @@
 
 <%= render @conversation.comments %>
 
-<div>Add a Comment</div>
+<div style="padding-bottom:5px;">
+<a id="addComment">Add a Comment</a>
+</div>
 
 <%= form_for([@conversation, @conversation.comments.build]) do |f| %>
 	<div>
@@ -27,5 +29,15 @@
 		<%= f.submit %>
 	</div>
 <% end %>
+
+<script>
+	$(document).ready(function() {
+		$('#addComment').click(function() {
+			$('#new_comment').toggle('fast');
+		});
+
+		$('#new_comment').hide();
+	});
+</script>
 
 

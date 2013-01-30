@@ -9,8 +9,12 @@
   <% @conversations.each do |conversation| %>
     <tr>
       <td style="padding-right:10px;"><%= link_to conversation.name, conversation %></td>
-      <td><%= link_to 'Edit', edit_conversation_path(conversation) %></td>
-      <td><%= link_to 'Delete', conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+      <% if conversation.postedByUser == current_user.id %> 
+        <td><%= link_to 'Edit', edit_conversation_path(conversation) %></td>
+        <td><%= link_to 'Delete', conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+
     </tr>
   <% end %>
   </table>

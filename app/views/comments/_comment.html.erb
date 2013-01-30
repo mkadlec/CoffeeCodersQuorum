@@ -3,10 +3,12 @@
 		<tr>
 			<td>
 				<b><%= comment.nil? or comment.user.nil? ? "Someone" : comment.user.email %></b> posted the comment:
-	<%= comment.body %>
+				<%= comment.body %>
 			</td>
 			<td>
-				<%= link_to 'delete', [comment.conversation, comment], :confirm => 'Are you sure?', :method => :delete %>
+				<% if comment.user_id == current_user.id %> 
+					<%= link_to 'delete', [comment.conversation, comment], :confirm => 'Are you sure?', :method => :delete %>
+				<% end %>
 			</td>
 		</tr>
 	</table>
