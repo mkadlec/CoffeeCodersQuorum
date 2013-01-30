@@ -1,5 +1,3 @@
-
-
 <% if @conversations.count == 0 && user_signed_in? %>
   There are currently no active conversations, would you like to <u><%= link_to 'create one', new_conversation_path %></u>?
 <% else %>
@@ -21,9 +19,9 @@
 
   <br />
 
-<% if user_signed_in? %>
-  <%= link_to 'New Conversation', new_conversation_path %>
-<% end %>
+  <% if user_signed_in? %>
+    <%= link_to 'New Conversation', new_conversation_path %>
+  <% end %>
 
 
 <% end %>

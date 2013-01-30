@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<div style="font-size: 20px;">
+	<p>
+	 	<b><%= @conversation.name %></b>
+	</p>
+</div>
+
+<p>
+  <%= @conversation.description %>
+</p>
+
+<p>
+	<div style="font-size:75%">
+		<b>Posted By:</b>
+		<%= @user.nil? ? "Unknown" : @user.email %>
+  	</div>
+</p>
+
+<%= render @conversation.comments %>
+
+<div style="padding-bottom:5px;">
+<a id="addComment">Add a Comment</a>
+</div>
+
+<%= form_for([@conversation, @conversation.comments.build]) do |f| %>
+	<div>
+		<%= f.text_area :body, :class => "textField" %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
+
+<script>
+	$(document).ready(function() {
+		$('#addComment').click(function() {
+			$('#new_comment').toggle('fast');
+		});
+
+		$('#new_comment').hide();
+	});
+</script>
+
+
