@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require conversations
 
  */
  body {
@@ -52,14 +53,11 @@ a:active {text-decoration:underline;}
 	background-color: #FBDFDE;
 }
 
-.conversationName {
-	
+.field {
+	padding-bottom: 5px;
 }
 
-.textField {
-	width: 40em;
-	height: 10em;
-	background-color: #EEEEEE;
-}
+
+
 
 

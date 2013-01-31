@@ -19,23 +19,8 @@
 
 	<div style="float:right; padding: 5px;">
 
-	<% if admin_signed_in? %>
-		<div>
-			<%= link_to "Admin Sign Out", destroy_admin_session_path, :method => :delete %>
-		</div>
-	<% else %>	
-		<% if user_signed_in? %>
-			<div>
-				<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-			</div>
-		<% else %>
-			<div>
-				<%= link_to 'Sign In', new_user_session_path %>
-			</div>
-		<% end %>
-	<% end %>
+<%= render "shared/authentication_status" %>
 
-	
 </div>
 <div id="content">
 
@@ -44,7 +29,6 @@
 	</div>
 
 	<div>
-
 
 	</div>
 
@@ -55,11 +39,11 @@
 	
 </div>
 
-	<script>
-		$('#mainHeader').click(function() {
-			window.location = Routes.conversations_path();
-		})
-	</script>
+<script>
+	$('#mainHeader').click(function() {
+		window.location = Routes.conversations_path();
+	})
+</script>
 
 </body>
 </html>
