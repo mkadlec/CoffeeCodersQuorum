@@ -1,8 +1,10 @@
 CoffeeCodersQuorum::Application.routes.draw do
+
   resources :conversations do
     resources :comments
   end
 
+  devise_for :admins
   devise_for :users
 
   #get "home/index"

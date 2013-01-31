@@ -7,8 +7,12 @@
   <% @conversations.each do |conversation| %>
     <tr>
       <td style="padding-right:10px;"><%= link_to conversation.name, conversation %></td>
+
+      <% if admin_signed_in? %>
+        Admin!
+      <% end %>
       
-      <% if user_signed_in? && conversation.postedByUser == current_user.id %> 
+      <% if (user_signed_in? && (conversation.postedByUser == current_user.id) || admin_signed_in? %> 
         <td><%= link_to link_to image_tag( 'edit.png', :size => "16x16"), edit_conversation_path(conversation) %></td>
         <td><%= link_to image_tag( 'delete.jpg', :size => "12x12"), conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
