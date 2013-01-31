@@ -6,7 +6,7 @@
 				<%= comment.body %>	
 			</td>
 			<td>
-				<% if user_signed_in? && comment.user_id == current_user.id %> 
+				<% if admin_signed_in? || (user_signed_in? && comment.user_id == current_user.id) %> 
 					<%= link_to image_tag( 'delete.jpg', :size => "12x12"), [comment.conversation, comment],
 								 :confirm => 'Are you sure?', :method => :delete %>
 				<% end %>							
