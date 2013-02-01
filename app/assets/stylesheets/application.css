@@ -16,6 +16,7 @@
  	font-family: Georgia, serif;
  	font-size: 14px;
  	margin: 0;
+ 	background-color: #F4F1EE;
  }
 
 a:link {text-decoration:none;}
@@ -40,6 +41,7 @@ a:active {text-decoration:underline;}
 	margin: auto;
 	width: 960px;
 	min-height: 450px;
+	background-color: #F4F1EE;
 }
 
 #mainBody {
