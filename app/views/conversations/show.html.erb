@@ -19,7 +19,9 @@
   	</div>
 </p>
 
-<%= render @conversation.comments %>
+<div id="commentsDiv">
+	<%= render @conversation.comments %>
+</div>
 
 <% if user_signed_in? %>
 	<div style="padding-bottom:5px;">
@@ -36,6 +38,12 @@
 		});
 
 		$('#new_comment').hide();
+
+		$("#new_comment").bind('ajax:success', function(evt, data, status, xhr) {
+			$('#commentsDiv').append($(xhr.responseText).show('fast'));
+			$('#comment_body').val('');
+		});
+
 	});
 </script>
 

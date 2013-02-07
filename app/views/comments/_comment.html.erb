@@ -1,4 +1,4 @@
-<div style="padding-left:15px;padding-bottom:10px;">
+<div style="padding-left:15px;padding-bottom:10px;" id="comment<%= comment.id %>">
 
 	<table>
 		<tr>
@@ -7,8 +7,7 @@
 			</td>
 			<td>
 				<% if admin_signed_in? || (user_signed_in? && comment.user_id == current_user.id) %> 
-					<%= link_to image_tag( 'delete.jpg', :size => "12x12"), [comment.conversation, comment],
-								 :confirm => 'Are you sure?', :method => :delete %>
+					<%= link_to image_tag( 'delete.jpg', :size => "12x12"), [comment.conversation, comment], :method => :delete, :remote => true %>
 				<% end %>							
 			</td>
 		</tr>
