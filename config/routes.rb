@@ -2,13 +2,15 @@ CoffeeCodersQuorum::Application.routes.draw do
 
   resources :conversations do
     resources :comments
+    collection do
+      post '/add_properties', :as => :add_properties
+    end
   end
 
   resources :comments, :only => [:create, :destroy]
 
   devise_for :admins
   devise_for :users
-
 
   resources :users
 

@@ -19,6 +19,8 @@ class ConversationsController < ApplicationController
       @user = User.find(@conversation.postedByUser)
     end
 
+    @assignToUsers = User.all
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @conversation }
@@ -85,4 +87,15 @@ class ConversationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add_properties
+    @conversation = Conversation.find(params[:conversationId])
+    @conversation.update_attributes(params[:conversation])
+    @conversation.save
+
+    respond_to do |format|
+       format.js { render "add_properties" }
+    end
+  end
+
 end

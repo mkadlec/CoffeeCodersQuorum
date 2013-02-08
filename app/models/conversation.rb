@@ -1,5 +1,5 @@
 class Conversation < ActiveRecord::Base
-  attr_accessible :description, :name, :postedByUser
+  attr_accessible :description, :name, :postedByUser, :assigned_to
 
   validates :name, :presence => true, :length => { :minimum => 5 }
   validates :description, :presence => true

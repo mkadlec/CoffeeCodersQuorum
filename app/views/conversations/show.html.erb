@@ -11,10 +11,7 @@
 </p>
 
 <p>
-	<div style="font-size:75%">
-		<b>Posted By:</b>
-		<%= @user.nil? ? "Unknown" : @user.email %>
-  	</div>
+	<%= render "conversationProperties" %>
 </p>
 
 <div id="commentsDiv">
@@ -22,26 +19,32 @@
 </div>
 
 <% if admin_signed_in? || user_signed_in? %>
-	<div style="padding-bottom:5px;"
->	<a id="addComment">Add a Comment</a>
+	<div style="padding-bottom:5px;">
+		<a id="addComment">Add a Comment</a>
 	</div>
 <% end %>
 
 <%= render "comments/form" %>
 
+<div id="ajaxFeedback" style="padding:10px;color:green;float:right;"/>
+
 <script>
 	$(document).ready(function() {
+		$('#new_comment').hide();
+		$('#ajaxFeedback').hide();
+
 		$('#addComment').click(function() {
 			$('#new_comment').toggle('fast');
 		});
-
-		$('#new_comment').hide();
-
+		
 		$("#new_comment").bind('ajax:success', function(evt, data, status, xhr) {
 			$('#commentsDiv').append($(xhr.responseText).show('fast'));
 			$('#comment_body').val('');
 		});
 
+		$('#conversation_assigned_to').change(function(){
+			$(this).parents('form:first').submit();
+		});
 	});
 </script>
 
