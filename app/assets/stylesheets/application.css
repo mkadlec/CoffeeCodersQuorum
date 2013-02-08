@@ -55,6 +55,10 @@ a:active {text-decoration:underline;}
 	background-color: #FBDFDE;
 }
 
+.requiredField {
+	background-color: #FAFFBD;
+}
+
 .field {
 	padding-bottom: 5px;
 }

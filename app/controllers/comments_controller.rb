@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     @conversation = Conversation.find(params[:conversation_id])
     @comment = @conversation.comments.create(params[:comment])
-    @comment.update_attributes(:user_id => current_user.id)
+    @comment.update_attributes(:user_id => current_user ? current_user.id : nil)
     
     render :partial => "comments/comment", :locals => { :comment => @comment }, :layout => false, :status => :created
   end

@@ -5,7 +5,12 @@
 <% else %>	
 	<% if user_signed_in? %>
 		<div>
-			<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+			<div style="font-weight:bold;">
+				<%= link_to current_user.name == nil ? current_user.email : current_user.name, edit_user_registration_path %>
+			</div>
+			<div>
+				<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+			</div>
 		</div>
 	<% else %>
 		<div>

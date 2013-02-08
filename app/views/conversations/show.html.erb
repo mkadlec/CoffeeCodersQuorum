@@ -23,9 +23,9 @@
 	<%= render @conversation.comments %>
 </div>
 
-<% if user_signed_in? %>
-	<div style="padding-bottom:5px;">
-	<a id="addComment">Add a Comment</a>
+<% if admin_signed_in? || user_signed_in? %>
+	<div style="padding-bottom:5px;"
+>	<a id="addComment">Add a Comment</a>
 	</div>
 <% end %>
 

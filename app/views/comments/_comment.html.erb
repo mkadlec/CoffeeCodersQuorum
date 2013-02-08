@@ -13,7 +13,7 @@
 		</tr>
 		<tr>
 			<td style="text-align:right;">
-				<span style="font-size:75%"><b><%= comment.nil? or comment.user.nil? ? "Someone" : comment.user.email %></b></span>
+				<span style="font-size:75%"><b><%= comment.nil? or comment.user.nil? ? "Admin" : current_user.name == nil ? current_user.email : current_user.name %></b></span>
 			</td>
 		</tr>
 	</table>

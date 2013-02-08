@@ -9,7 +9,8 @@ CoffeeCodersQuorum::Application.routes.draw do
   devise_for :admins
   devise_for :users
 
-  #get "home/index"
+
+  resources :users
 
   get 'users/login'
   match 'users/login' => 'users#login', :as => :login
