@@ -6,7 +6,9 @@
 			<b>Created By:</b><%= @user.nil? ? "Unknown" : @user.email %>			
 		</td>
 		<td style="text-align:right;">
-		  	Assign to:<%= collection_select(:conversation, :assigned_to, @assignToUsers, :id, :name, :include_blank => true ) %>
+			<% if admin_signed_in? || user_signed_in? %>
+		  		Assign to:<%= collection_select(:conversation, :assigned_to, @assignToUsers, :id, :name, :include_blank => true ) %>
+		  	<% end %>
 		</td>
 	</tr>
 </table>
