@@ -1,0 +1,18 @@
+<%= form_tag(add_properties_conversations_path, :method => 'post', :remote => true) do |f| %>
+
+<table width="100%">
+	<tr>
+		<td style="font-size:75%">
+			<b>Created By:</b><%= @user.nil? ? "Unknown" : @user.email %>			
+		</td>
+		<td style="text-align:right;">
+			<% if admin_signed_in? || user_signed_in? %>
+		  		Assign to:<%= collection_select(:conversation, :assigned_to, @assignToUsers, :id, :name, :include_blank => true ) %>
+		  	<% end %>
+		</td>
+	</tr>
+</table>
+
+<%= hidden_field_tag :conversationId, @conversation.id %>
+
+<% end %>
