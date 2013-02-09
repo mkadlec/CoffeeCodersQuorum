@@ -6,4 +6,12 @@ class Conversation < ActiveRecord::Base
 
   has_many :comments, :dependent => :destroy
 
+  belongs_to :assigned, :class_name => "User", :foreign_key => "assigned_to"
+  belongs_to :posted, :class_name => "User", :foreign_key => "postedByUser"
+
 end
+
+class Conversation < ActiveRecord::Base
+  attr_accessible :description, :name, :assigned_to
+end
+

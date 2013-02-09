@@ -13,9 +13,8 @@
 		</tr>
 		<tr>
 			<td style="text-align:right;">
-				<% if admin_signed_in? || user_signed_in? %>
-					<span style="font-size:75%"><b><%= comment.nil? or comment.user.nil? ? "Admin" : current_user.name == nil ? current_user.email : current_user.name %></b></span>
-				<% end %>
+				<% if !current_user.nil? && (admin_signed_in? || user_signed_in?) %>
+					<span style="font-size:75%"><b><%= comment.nil? or comment.user.nil? ? "Admin" : current_user.nil? ? current_user.email : current_user.name %></b></span>			<% end %>
 			</td>
 		</tr>
 	</table>

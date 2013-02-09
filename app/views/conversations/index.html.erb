@@ -6,12 +6,24 @@
 
   <% @conversations.each do |conversation| %>
     <tr>
-      <td style="padding-right:10px;font-weight:bold;"><%= link_to conversation.name, conversation %></td>
-      
+ 
       <% if admin_signed_in? || (user_signed_in? && conversation.postedByUser == current_user.id) %> 
-        <td><%= link_to link_to image_tag( 'edit.png', :size => "16x16"), edit_conversation_path(conversation) %></td>
-        <td><%= link_to image_tag( 'delete.png', :size => "12x12"), conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td style="width=20px;"><%= link_to link_to image_tag( 'edit.png', :size => "16x16"), edit_conversation_path(conversation) %></td>
+        <td style="width=20px;"><%= link_to image_tag( 'delete.png', :size => "12x12"), conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>         
+
       <% end %>
+
+      <td style="padding-right:10px;padding-left:5px;font-weight:bold;font-size:120%;"><%= link_to conversation.name, conversation %></td>
+      <td style="padding-left:10px;">
+        <% if !conversation.assigned.nil? %>
+          <% if conversation.assigned.nil? %>
+            <%= conversation.assigned.email %>
+          <% else %>
+            <%= conversation.assigned.name %>
+          <% end %> 
+        <% end %>
+      </td>
 
     </tr>
   <% end %>
@@ -20,7 +32,7 @@
   <br />
 
   <% if user_signed_in? %>
-    <%= link_to 'New Conversation', new_conversation_path %>
+    <%= link_to 'New Item', new_conversation_path %>
   <% end %>
 
 
