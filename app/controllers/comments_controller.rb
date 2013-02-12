@@ -15,5 +15,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.js { render "destroy"}
     end
+
+    
   end
 end

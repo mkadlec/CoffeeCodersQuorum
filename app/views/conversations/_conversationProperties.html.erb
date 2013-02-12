@@ -11,6 +11,22 @@
 		  	<% end %>
 		</td>
 	</tr>
+	<tr>
+		<td/>
+		<td style="text-align:right;">
+			<% if admin_signed_in? || user_signed_in? %>
+		  		Sprint:<%= collection_select(:conversation, :sprint, Sprint.all, :id, :name, :include_blank => true ) %>
+		  	<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td/>
+		<td style="text-align:right;">
+			<% if admin_signed_in? || user_signed_in? %>
+		  		Points:<input type="text" id="conversation_points" name="conversation[points]" style="margin-left:5px;width:30px;"/>
+		  	<% end %>
+		</td>
+	</tr>
 </table>
 
 <%= hidden_field_tag :conversationId, @conversation.id %>

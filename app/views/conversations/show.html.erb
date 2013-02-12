@@ -45,6 +45,14 @@
 		$('#conversation_assigned_to').change(function(){
 			$(this).parents('form:first').submit();
 		});
+
+		$('#conversation_sprint').change(function(){
+			$(this).parents('form:first').submit();
+		});
+
+		$('#conversation_points').blur(function(){
+			$(this).parents('form:first').submit();
+		});
 	});
 </script>
 
