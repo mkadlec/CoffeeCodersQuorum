@@ -5,10 +5,10 @@ class ConversationsController < ApplicationController
 
     @sprint = params[:sprint]
 
-    if (@sprint.nil? || @sprint.empty?)
+    if @sprint.nil? || @sprint.empty?
       @conversations = Conversation.all
     else
-      @conversations = Conversation.where("sprint = ?", @sprint)
+      @conversations = Conversation.where('sprint = ?', @sprint)
     end
 
     respond_to do |format|
@@ -22,11 +22,11 @@ class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
 
-    if (!@conversation.postedByUser.nil?)
+    if @conversation.postedByUser.present?
       @user = User.find(@conversation.postedByUser)
     end
 
-    @assignToUsers = User.all
+    @assign_to_users = User.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -96,9 +96,8 @@ class ConversationsController < ApplicationController
   end
 
   def add_properties
-    @conversation = Conversation.find(params[:conversationId])
-    @conversation.update_attributes(params[:conversation])
-    @conversation.save
+    #@conversation = Conversation.update(params[:conversationId], :conversation => params[:conversation])
+    @conversation = Conversation.update(params[:conversationId], :assigned_to => params[:assigned_to], :sprint => params[:sprint], :points => params[:points])
 
     respond_to do |format|
        format.js { render "add_properties" }
