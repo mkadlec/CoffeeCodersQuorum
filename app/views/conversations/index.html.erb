@@ -2,32 +2,42 @@
   There are currently no active conversations, would you like to <u><%= link_to 'create one', new_conversation_path %></u>?
 <% else %>
 
-  <table>
+  <div>
+    <%= collection_select(:conversation, :sprint, Sprint.all, :id, :name, :include_blank => true, :selected => @sprint ) %>
+  </div>
 
-  <% @conversations.each do |conversation| %>
-    <tr>
- 
-      <% if admin_signed_in? || (user_signed_in? && conversation.postedByUser == current_user.id) %> 
+  <div style="padding-top:10px;">
 
-        <td style="width=20px;"><%= link_to link_to image_tag( 'edit.png', :size => "16x16"), edit_conversation_path(conversation) %></td>
-        <td style="width=20px;"><%= link_to image_tag( 'delete.png', :size => "12x12"), conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>         
+    <table>
 
-      <% end %>
+    <% @conversations.each do |conversation| %>
+      <tr>
+   
+        <% if admin_signed_in? || (user_signed_in? && conversation.postedByUser == current_user.id) %> 
 
-      <td style="padding-right:10px;padding-left:5px;font-weight:bold;font-size:120%;"><%= link_to conversation.name, conversation %></td>
-      <td style="padding-left:10px;">
-        <% if !conversation.assigned.nil? %>
-          <% if conversation.assigned.nil? %>
-            <%= conversation.assigned.email %>
-          <% else %>
-            <%= conversation.assigned.name %>
-          <% end %> 
+          <td style="width=20px;"><%= link_to link_to image_tag( 'edit.png', :size => "16x16"), edit_conversation_path(conversation) %></td>
+          <td style="width=20px;"><%= link_to image_tag( 'delete.png', :size => "12x12"), conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>         
+
         <% end %>
-      </td>
 
-    </tr>
-  <% end %>
-  </table>
+        <td style="padding-right:10px;padding-left:5px;font-weight:bold;font-size:120%;"><%= link_to conversation.name, conversation %></td>
+        <td style="padding-left:10px;">
+          <% if !conversation.assigned.nil? %>
+            <% if conversation.assigned.nil? %>
+              <%= conversation.assigned.email %>
+            <% else %>
+              <%= conversation.assigned.name %>
+            <% end %> 
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+
+    </table>
+
+  </div>
+
 
   <br />
 
@@ -37,3 +47,13 @@
 
 
 <% end %>
+
+<script>
+  $(document).ready(function() {
+    $('#conversation_sprint').change(function() {
+      var sprint = $(this).val();
+      var url = Routes.conversations_path({sprint: sprint});
+      window.location = url;
+    });
+  });
+</script>

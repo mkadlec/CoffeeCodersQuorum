@@ -2,7 +2,14 @@ class ConversationsController < ApplicationController
   # GET /conversations
   # GET /conversations.json
   def index
-    @conversations = Conversation.all
+
+    @sprint = params[:sprint]
+
+    if (@sprint.nil? || @sprint.empty?)
+      @conversations = Conversation.all
+    else
+      @conversations = Conversation.where("sprint = ?", @sprint)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
