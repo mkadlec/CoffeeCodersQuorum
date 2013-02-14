@@ -2,6 +2,8 @@
   There are currently no active conversations, would you like to <u><%= link_to 'create one', new_conversation_path %></u>?
 <% else %>
 
+  <% if user_signed_in? || admin_signed_in? %>
+
   <div>
     <%= collection_select(:conversation, :sprint, Sprint.all, :id, :name, :include_blank => true, :selected => @sprint ) %>
   </div>
@@ -13,7 +15,7 @@
     <% @conversations.each do |conversation| %>
       <tr>
    
-        <% if admin_signed_in? || (user_signed_in? && conversation.postedByUser == current_user.id) %> 
+        <% if conversation.postedByUser == current_user.id %>
 
           <td style="width=20px;"><%= link_to link_to image_tag( 'edit.png', :size => "16x16"), edit_conversation_path(conversation) %></td>
           <td style="width=20px;"><%= link_to image_tag( 'delete.png', :size => "12x12"), conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>         
@@ -41,7 +43,7 @@
 
   <br />
 
-  <% if user_signed_in? %>
+
     <%= link_to 'New Item', new_conversation_path %>
   <% end %>
 

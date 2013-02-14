@@ -61,7 +61,7 @@ class ConversationsController < ApplicationController
         format.html { redirect_to @conversation, notice: 'Conversation was successfully created.' }
         format.json { render json: @conversation, status: :created, location: @conversation }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @conversation.errors, status: :unprocessable_entity }
       end
     end
@@ -77,7 +77,7 @@ class ConversationsController < ApplicationController
         format.html { redirect_to @conversation, notice: 'Conversation was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @conversation.errors, status: :unprocessable_entity }
       end
     end
@@ -96,11 +96,10 @@ class ConversationsController < ApplicationController
   end
 
   def add_properties
-    #@conversation = Conversation.update(params[:conversationId], :conversation => params[:conversation])
-    @conversation = Conversation.update(params[:conversationId], :assigned_to => params[:assigned_to], :sprint => params[:sprint], :points => params[:points])
+    @conversation = Conversation.update(params[:conversationId], :assigned_to => params[:conversation][:assigned_to], :sprint => params[:conversation][:sprint], :points => params[:conversation][:points])
 
     respond_to do |format|
-       format.js { render "add_properties" }
+       format.js { render 'add_properties' }
     end
   end
 
