@@ -6,7 +6,7 @@
 				<%= comment.body %>	
 			</td>
 			<td>
-				<% if admin_signed_in? || (user_signed_in? && comment.user_id == current_user.id) %> 
+				<% if admin_signed_in? || (user_signed_in? && comment.user_id == current_user.id) %>
 					<%= link_to image_tag( 'delete.png', :size => "12x12"), [comment.conversation, comment], :method => :delete, :remote => true %>
 				<% end %>							
 			</td>
@@ -14,7 +14,8 @@
 		<tr>
 			<td style="text-align:right;">
 				<% if !current_user.nil? && (admin_signed_in? || user_signed_in?) %>
-					<span style="font-size:75%"><b><%= comment.nil? or comment.user.nil? ? "Admin" : current_user.nil? ? current_user.email : current_user.name %></b></span>			<% end %>
+					<span style="font-size:75%"><b><%= comment.nil? or comment.user.nil? ? "Admin" : comment.user.name.nil? ? comment.user.email : comment.user.name %></b></span>
+                <% end %>
 			</td>
 		</tr>
 	</table>

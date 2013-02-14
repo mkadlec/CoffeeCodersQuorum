@@ -2,8 +2,6 @@
   There are currently no active conversations, would you like to <u><%= link_to 'create one', new_conversation_path %></u>?
 <% else %>
 
-  <% if user_signed_in? || admin_signed_in? %>
-
   <div>
     <%= collection_select(:conversation, :sprint, Sprint.all, :id, :name, :include_blank => true, :selected => @sprint ) %>
   </div>
@@ -40,13 +38,9 @@
 
   </div>
 
-
   <br />
 
-
-    <%= link_to 'New Item', new_conversation_path %>
-  <% end %>
-
+  <%= link_to 'New Item', new_conversation_path %>
 
 <% end %>
 

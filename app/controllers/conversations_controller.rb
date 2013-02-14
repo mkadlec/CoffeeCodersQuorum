@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
-  # GET /conversations
-  # GET /conversations.json
+  before_filter :authenticate_user!
+
   def index
 
     @sprint = params[:sprint]
