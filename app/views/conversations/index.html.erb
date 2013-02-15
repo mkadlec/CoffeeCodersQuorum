@@ -1,10 +1,17 @@
-<% if @conversations.count == 0 && user_signed_in? %>
-  There are currently no active conversations, would you like to <u><%= link_to 'create one', new_conversation_path %></u>?
-<% else %>
 
+<div id="collapsibleMenu">
+  <h3>
+  </h3>
   <div>
     <%= collection_select(:conversation, :sprint, Sprint.all, :id, :name, :include_blank => true, :selected => @sprint ) %>
   </div>
+</div>
+
+<% if @conversations.count == 0 && user_signed_in? %>
+    <div style="padding-top: 10px;">
+      There are currently no active conversations, would you like to <u><%= link_to 'create one', new_conversation_path %></u>?
+    </div>
+<% else %>
 
   <div style="padding-top:10px;">
 
@@ -51,5 +58,9 @@
       var url = Routes.conversations_path({sprint: sprint});
       window.location = url;
     });
+
+      $("#collapsibleMenu").accordion({
+          collapsible: true
+      });
   });
 </script>
