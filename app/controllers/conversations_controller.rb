@@ -1,14 +1,14 @@
 class ConversationsController < ApplicationController
-  # GET /conversations
-  # GET /conversations.json
+  before_filter :authenticate_user!
+
   def index
 
     @sprint = params[:sprint]
 
-    if (@sprint.nil? || @sprint.empty?)
+    if @sprint.nil? || @sprint.empty?
       @conversations = Conversation.all
     else
-      @conversations = Conversation.where("sprint = ?", @sprint)
+      @conversations = Conversation.where('sprint = ?', @sprint)
     end
 
     respond_to do |format|
@@ -22,11 +22,11 @@ class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
 
-    if (!@conversation.postedByUser.nil?)
+    if @conversation.postedByUser.present?
       @user = User.find(@conversation.postedByUser)
     end
 
-    @assignToUsers = User.all
+    @assign_to_users = User.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -61,7 +61,7 @@ class ConversationsController < ApplicationController
         format.html { redirect_to @conversation, notice: 'Conversation was successfully created.' }
         format.json { render json: @conversation, status: :created, location: @conversation }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @conversation.errors, status: :unprocessable_entity }
       end
     end
@@ -77,7 +77,7 @@ class ConversationsController < ApplicationController
         format.html { redirect_to @conversation, notice: 'Conversation was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @conversation.errors, status: :unprocessable_entity }
       end
     end
@@ -96,12 +96,10 @@ class ConversationsController < ApplicationController
   end
 
   def add_properties
-    @conversation = Conversation.find(params[:conversationId])
-    @conversation.update_attributes(params[:conversation])
-    @conversation.save
+    @conversation = Conversation.update(params[:conversationId], :assigned_to => params[:conversation][:assigned_to], :sprint => params[:conversation][:sprint], :points => params[:conversation][:points])
 
     respond_to do |format|
-       format.js { render "add_properties" }
+       format.js { render 'add_properties' }
     end
   end
 

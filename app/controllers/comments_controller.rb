@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
+
   def create
     @conversation = Conversation.find(params[:conversation_id])
     @comment = @conversation.comments.create(params[:comment])
@@ -10,7 +12,9 @@ class CommentsController < ApplicationController
    def destroy
     @conversation = Conversation.find(params[:conversation_id])
     @comment = @conversation.comments.find(params[:id])
-    @comment.destroy
+    if @comment.user_id == current_user.id
+      @comment.destroy
+    end
     
     respond_to do |format|
       format.js { render "destroy"}

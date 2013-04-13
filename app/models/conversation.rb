@@ -11,7 +11,5 @@ class Conversation < ActiveRecord::Base
 
 end
 
-class Conversation < ActiveRecord::Base
-  attr_accessible :description, :name, :assigned_to
-end
+
 
