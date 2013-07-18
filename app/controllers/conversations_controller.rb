@@ -1,5 +1,4 @@
 class ConversationsController < ApplicationController
-  before_filter :authenticate_user!
 
   def index
 
@@ -38,7 +37,7 @@ class ConversationsController < ApplicationController
   # GET /conversations/new.json
   def new
     @conversation = Conversation.new
-
+    logger.debug "In new!"
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @conversation }
@@ -53,6 +52,7 @@ class ConversationsController < ApplicationController
   # POST /conversations
   # POST /conversations.json
   def create
+    logger.debug "In create!!"
     @conversation = Conversation.new(params[:conversation])
     @conversation.update_attributes(:postedByUser => current_user.id)
 
@@ -99,7 +99,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.update(params[:conversationId], :assigned_to => params[:conversation][:assigned_to], :sprint => params[:conversation][:sprint], :points => params[:conversation][:points])
 
     respond_to do |format|
-       format.js { render 'add_properties' }
+      format.js { render :layout => false, :partial => 'add_properties' }
     end
   end
 
