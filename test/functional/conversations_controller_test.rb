@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class ConversationsControllerTest < ActionController::TestCase
+
+  include Devise::TestHelpers
+
   setup do
     @conversation = conversations(:one)
   end
@@ -17,6 +20,7 @@ class ConversationsControllerTest < ActionController::TestCase
   end
 
   test "should create conversation" do
+    sign_in users(:user1)
     assert_difference('Conversation.count') do
       post :create, conversation: { description: @conversation.description, name: @conversation.name }
     end

@@ -32,9 +32,13 @@ GEM
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     better_errors (0.7.2)
-      coderay (>= 1.0.0)
+<<<<<<< .mine      coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    builder (3.0.4)
+=======      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.1)
+      debug_inspector (>= 0.0.1)
+>>>>>>> .theirs    builder (3.0.4)
     coderay (1.0.9)
     devise (2.2.2)
       bcrypt-ruby (~> 3.0)
@@ -115,6 +119,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  binding_of_caller
   devise
   jquery-rails
   js-routes
