@@ -12,6 +12,7 @@ gem 'pg'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
 
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
@@ -23,9 +24,12 @@ group :development do
 	gem "binding_of_caller"
 end
 
+
 gem 'jquery-rails'
 gem 'devise'
 gem 'js-routes'
+
+gem 'better_errors'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

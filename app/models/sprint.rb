@@ -1,3 +1,3 @@
 class Sprint < ActiveRecord::Base
-  attr_accessible :end, :name, :start
+  attr_accessible :name, :startDate, :endDate, :active
 end

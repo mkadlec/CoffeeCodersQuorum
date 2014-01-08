@@ -1,0 +1,36 @@
+
+
+<h1>Sprints</h1>
+
+<table>
+    <% @sprints.each do |sprint| %>
+    <tr>
+        <td><%= sprint.name %></td>
+        <td><%= link_to image_tag( 'delete.png', :size => "12x12"), delete_sprint_path(sprint) %></td>
+    <% end %>
+
+    </tr>
+</table>
+
+
+<%= form_for :sprint do |f| %>
+
+    <p>
+        <%= f.label :name %><br/>
+        <%= f.text_field :name %>
+    </p>
+
+    <p>
+        <%= f.label :start %><br/>
+        <%= f.text_field :startDate %>
+    </p>
+
+    <p>
+        <%= f.label :end %><br/>
+        <%= f.text_field :endDate %>
+    </p>
+
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>

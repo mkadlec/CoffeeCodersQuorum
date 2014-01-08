@@ -1,5 +1,7 @@
 CoffeeCodersQuorum::Application.routes.draw do
 
+  resources :comments, :only => [:create, :destroy]
+
   resources :conversations do
     resources :comments
     collection do
@@ -7,8 +9,9 @@ CoffeeCodersQuorum::Application.routes.draw do
     end
   end
 
-  resources :comments, :only => [:create, :destroy]
-
+  resources :sprints
+  match 'sprints/:id/delete' => 'sprints#delete', :as => "delete_sprint"
+  
   devise_for :admins
   devise_for :users
 

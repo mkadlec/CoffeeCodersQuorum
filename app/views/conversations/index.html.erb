@@ -1,10 +1,38 @@
+<style>
 
-<div id="collapsibleMenu">
-  <h3>
-  </h3>
-  <div>
-    <%= collection_select(:conversation, :sprint, Sprint.all, :id, :name, :include_blank => true, :selected => @sprint ) %>
-  </div>
+.menu_simple ul {
+    margin: 0; 
+    padding: 0;
+    list-style-type: none;
+    width: 185px;
+}
+
+.menu_simple ul li a {
+    text-decoration: none;
+    color: white; 
+    padding: 10.5px 11px;
+    background-color: #D4D4D4;
+    display:block;
+}
+ 
+.menu_simple ul li a:visited {
+    color: white;
+}
+ 
+.menu_simple ul li a:hover, .menu_simple ul li .current {
+    color: white;
+    background-color: #C1C1C1;
+}
+</style>
+
+<div class="menu_simple" style="width: 185px;height: 300px;background-color: #D4D4D4;float:left;padding-top:10px;">
+    <ul>
+
+    <% Sprint.all.each do |sprint| %>
+      <li><%= link_to sprint.name, conversations_path({sprint: sprint}) %></li>
+    <% end %>
+    <li><%= link_to "Add Sprint", sprints_path, {:style => 'font-size:75%; text-decoration:underline; color:#551A8B'} %></li>
+
 </div>
 
 <% if @conversations.count == 0 && user_signed_in? %>
@@ -13,9 +41,9 @@
     </div>
 <% else %>
 
-  <div style="padding-top:10px;">
+  <div>
 
-    <table>
+    <table style="padding-top:10px;padding-left:10px;">
 
     <% @conversations.each do |conversation| %>
       <tr>
@@ -41,13 +69,20 @@
       </tr>
     <% end %>
 
+    <tr>
+      <td colspan="3">
+        <%= link_to 'New Item', new_conversation_path %>
+      </td>
+    </tr>
+
     </table>
+
+    
 
   </div>
 
   <br />
 
-  <%= link_to 'New Item', new_conversation_path %>
 
 <% end %>
 

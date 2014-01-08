@@ -1,0 +1,28 @@
+// Place all the styles related to the sprint controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* CSSTerm.com Simple CSS menu */
+
+.menu_simple td {
+    margin: 0; 
+    padding: 0;
+    width:185px;
+    list-style-type: none;
+}
+
+.menu_simple td a {
+    text-decoration: none;
+    color: white; 
+    padding: 10.5px 11px;
+    background-color: #005555;
+    display:block;
+}
+ 
+.menu_simple td a:visited {
+    color: white;
+}
+ 
+.menu_simple td a:hover, .menu_simple td .current {
+    color: white;
+    background-color: #5FD367;
+}
