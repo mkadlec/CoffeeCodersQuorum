@@ -1,4 +1,12 @@
 
+<script>
+     
+    $(document).ready(function() {
+        $('.dateClass').datepicker();
+    });
+        
+ 
+</script>
 
 <h1>Sprints</h1>
 
@@ -27,7 +35,7 @@
 
     <p>
         <%= f.label :end %><br/>
-        <%= f.text_field :endDate %>
+        <%= f.text_field :endDate, :class => "dateClass" %>
     </p>
 
     <p>

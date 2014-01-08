@@ -43,7 +43,7 @@
 
   <div>
 
-    <table style="padding-top:10px;padding-left:10px;">
+    <table style="padding-top:10px;padding-left:20px;">
 
     <% @conversations.each do |conversation| %>
       <tr>
@@ -70,7 +70,7 @@
     <% end %>
 
     <tr>
-      <td colspan="3">
+      <td colspan="3" style="padding-top:10px;">
         <%= link_to 'New Item', new_conversation_path %>
       </td>
     </tr>
