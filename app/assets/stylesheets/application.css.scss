@@ -10,7 +10,7 @@
  *
 
  *= require_self
- *= require jquery.ui.all
+ *= require_tree ../../../vendor/assets/stylesheets/.
  *= require_tree .
  */
 

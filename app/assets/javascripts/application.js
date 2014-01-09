@@ -11,8 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery.ui.datepicker
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require jquery_ujs
 //= require js-routes
+//= require jquery-ui
 //= require_tree .
 
