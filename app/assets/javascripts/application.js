@@ -11,9 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require_tree ../../../vendor/assets/javascripts/.
 //= require jquery_ujs
 //= require js-routes
-//= require jquery-ui
+//= require_self
 //= require_tree .
+
+
 

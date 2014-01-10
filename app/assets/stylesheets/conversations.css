@@ -7,3 +7,13 @@
 	height: 10em;
 	background-color: #EEEEEE;
 }
+
+.notice {
+    background-color: #FF6565;  
+    color: black;
+    z-index: 999;
+    position: fixed;
+    font-weight: bold;
+    width: 96%;
+    margin: 20px; 
+}

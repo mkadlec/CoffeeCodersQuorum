@@ -6,18 +6,18 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
-gem 'jquery-ui-rails'
+gem 'devise'
+gem 'js-routes'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails', '3.0.4'
+  gem 'jquery-ui-rails'
+
 end
 
 group :development do
@@ -25,9 +25,6 @@ group :development do
 	gem "binding_of_caller"
 end
 
-gem 'jquery-rails'
-gem 'devise'
-gem 'js-routes'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

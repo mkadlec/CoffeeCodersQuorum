@@ -8,9 +8,9 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_tree ../../../vendor/assets/stylesheets/.
  *= require_self
  *= require conversations
+ *= require jquery.ui.all
 
  */
  body {
@@ -62,6 +62,17 @@ a:active {text-decoration:underline;}
 
 .field {
 	padding-bottom: 5px;
+}
+
+.notice {
+    border: solid 4px #900;
+    background-color: #FF6565;  
+    color: black;
+    z-index: 999;
+    position: fixed;
+    font-weight: bold;
+    width: 96%;
+    margin: 20px; 
 }
 
 

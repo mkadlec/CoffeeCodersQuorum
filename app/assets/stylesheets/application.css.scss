@@ -10,8 +10,8 @@
  *
 
  *= require_self
- *= require_tree ../../../vendor/assets/stylesheets/.
  *= require_tree .
+ 
  */
 
  body {
@@ -31,4 +31,9 @@
 #mainBody {
 	padding: 10px;
 	color: #465158;
+}
+
+p {
+    border: solid 4px #26722D;
+    background-color: #A4E7A0;       
 }

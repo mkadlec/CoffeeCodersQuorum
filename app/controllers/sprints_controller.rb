@@ -1,4 +1,7 @@
 class SprintsController < ApplicationController
+
+  before_filter :check_privileges!, except: [:index, :show]
+
   def index
   	@sprints = Sprint.where('active = ?', true)  
 
