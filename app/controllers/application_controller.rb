@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
     request.format = :mobile if mobile_device?
   end
 
-  def check_privileges!
-    if !user_signed_in? && !admin_signed_in?
+  def check_admin!
+    if !admin_signed_in?
       flash[:notice] = "You need to be an admin"
       redirect_to "/"
     end
