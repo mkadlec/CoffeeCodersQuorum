@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20140108222424) do
 
   create_table "admins", :force => true do |t|
-    t.string   "email",                  :default => "",   :null => false
-    t.string   "encrypted_password",     :default => "",   :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -24,9 +24,7 @@ ActiveRecord::Schema.define(:version => 20140108222424) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.boolean  "infiniteLives_mode",     :default => true
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.boolean  "infiniteLives_mode"
     t.string   "name"
   end
 

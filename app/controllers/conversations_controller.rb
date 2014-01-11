@@ -3,6 +3,7 @@ class ConversationsController < ApplicationController
   def index
 
     @sprint = params[:sprint]
+    @sprints = Sprint.where('active = ?', true) 
 
     if @sprint.nil? || @sprint.empty?
       @conversations = Conversation.all
